@@ -1,0 +1,61 @@
+---
+
+interface Props {
+	title: string;
+	href: string;
+  image: {
+    url: string;
+    alt?: string;
+  };
+}
+
+const { href, title, image } = Astro.props;
+
+---
+
+<li class="blog-item-card">
+	<a href={href}>
+		<figure class="eyecatch">
+      {image ? (
+        <img src={image.url} alt={image.alt || title} />
+      ) : (
+        <div class="placeholder-image">No Image Available</div>
+      )}
+    </figure>
+		<figcaption class="blog-title">{title}</figcaption>
+	</a>
+</li>
+<style>
+.blog-item-card {
+  width: 100%;
+  height: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.blog-item-card:nth-of-type(1) {
+  margin-top: 120px;
+}
+
+.eyecatch {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.blog-item-card .blog-title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+@media (min-width: 768px) {
+  .blog-item-card:nth-of-type(1) {
+    margin-top: 80px;
+  }
+}
+
+</style>
