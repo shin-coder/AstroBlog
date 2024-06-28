@@ -16,7 +16,7 @@ const blog = await getBlogDetail(blogId as string);
 
 ---
 
-<Layout title="Blog Deatil">
+<Layout title={blog.title}>
   <main>
     <h1>{blog.title}</h1>
     <p>公開日時：{new Date(blog.publishedAt).toLocaleString()}</p>

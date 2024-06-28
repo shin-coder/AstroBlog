@@ -3,7 +3,10 @@
 interface Props {
 	title: string;
 	href: string;
-  image: string;
+  image: {
+    url: string;
+    alt?: string;
+  };
 }
 
 const { href, title, image } = Astro.props;
@@ -12,7 +15,13 @@ const { href, title, image } = Astro.props;
 
 <li class="blog-item-card">
 	<a href={href}>
-		<figure class="eyecatch"><img src={image} alt=""></figure>
+		<figure class="eyecatch">
+      {image ? (
+        <img src={image.url} alt={image.alt || title} />
+      ) : (
+        <div class="placeholder-image">No Image Available</div>
+      )}
+    </figure>
 		<figcaption class="blog-title">{title}</figcaption>
 	</a>
 </li>
