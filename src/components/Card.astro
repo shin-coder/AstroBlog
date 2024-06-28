@@ -19,7 +19,7 @@ const { href, title, image } = Astro.props;
       {image ? (
         <img src={image.url} alt={image.alt || title} />
       ) : (
-        <div class="placeholder-image">No Image Available</div>
+        <div class="placeholder-image">No Image</div>
       )}
     </figure>
 		<figcaption class="blog-title">{title}</figcaption>
